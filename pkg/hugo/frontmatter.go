@@ -58,11 +58,11 @@ func parseFrontMatter(w io.Writer, r io.Reader, currentTime time.Time) (*FrontMa
 	}
 	if isArray := isArray(&cfm, fmAuthor); isArray {
 		if fm.Author, err = getFirstStringItem(&cfm, fmAuthor); err != nil {
-			return nil, err
+			fm.Author = "Anonymous"
 		}
 	} else {
 		if fm.Author, err = getString(&cfm, fmAuthor); err != nil {
-			return nil, err
+			fm.Author = "Anonymous"
 		}
 	}
 	if isArray := isArray(&cfm, fmCategories); isArray {
